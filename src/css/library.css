@@ -1,0 +1,85 @@
+body, div, h1, h2, h3, p, label, input, button, select, textarea, fieldset {
+  display: block;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+ol, ul {
+  margin: 0;
+}
+
+body, input, button, select, textarea, fieldset, h1, h2 {
+  font: 10pt courier new;
+}
+
+input[type="text"], input[type="password"], button, select {
+  height: 30px;
+}
+
+input[type="text"], input[type="password"], button, select, .fas, .lineHeight1 {line-height: 1;}
+
+.absolute {position: absolute;}
+.relative {position: relative;}
+
+.overflow-hidden {overflow: hidden;}
+
+.flex {display: flex;}
+
+.flex-wrap {flex-wrap: wrap;}
+
+.flex-col {flex-direction: column;}
+
+.spaceAround   {justify-content: space-around;}
+.spaceBetween  {justify-content: space-between;}
+.justifyCenter {justify-content: center;}
+.flexEnd       {justify-content: flex-end;}
+
+.alignCenter {align-items: center;}
+
+.bdrBox {
+  box-sizing: border-box;
+}
+
+.m5  {margin: 5px;}
+
+.mt10 {margin-top: 10px;}
+
+.mr5  {margin-right:  5px;}
+.mr10 {margin-right: 10px;}
+
+.mb5  {margin-bottom:  5px;}
+.mb10 {margin-bottom: 10px;}
+
+.ml10 {margin-left: 10px;}
+
+.mAuto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bdrBlack    {border:     1px solid black;}
+.bdrBlackTop {border-top: 1px solid black;}
+
+.p5  {padding:  5px;}
+.p10 {padding: 10px;}
+
+.pt5  {padding-top:  5px;}
+
+.wFull {width: 100%;}
+.hFull {height: 100%;}
+
+.w600 {max-width: 600px;}
+
+.bgWhite {background-color: white;}
+
+.fs14 {font-size: 14pt;}
+.fs20 {font-size: 20pt;}
+
+.bold {font-weight: bold;}
+
+.opacity25 {opacity: 0.25;}
+.opacity50 {opacity: 0.5;}
+
+.csrPointer {cursor: pointer;}
