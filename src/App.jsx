@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
+// import { debug } from './utils';
+
 import('./css/library.css');
 import('./css/wardrobe.css');
 
@@ -32,7 +34,7 @@ function App() {
     if (response) {
       response.data.outfits.results.forEach(outfit => {
         const previousSunday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay());
-        const outfitDate     = new Date(outfit.date);
+        const outfitDate     = new Date(outfit.date.replace(' ', 'T'));
 
         outfit.to_wash_bottom = outfit.to_wash_bottom === '1';
         outfit.to_wash_top    = outfit.to_wash_top === '1';
