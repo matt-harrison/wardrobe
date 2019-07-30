@@ -107,6 +107,8 @@ function App() {
       (await axios.get('https://www.rootbeercomics.com/api/wardrobe/upsert.php', data).then(response => {
         if (response && response.data.success) {
           getData();
+          setDayOfWeek(null);
+          setOutfitId(null);
           setShowOutfitForm(false);
         }
       }))();
