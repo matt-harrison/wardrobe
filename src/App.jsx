@@ -47,9 +47,15 @@ function App() {
 
       for (let i = 0; i < 7; i++) {
         if (days[i]) {
-          week.push(days[i]);
+          week.push({
+            ...days[i],
+            isPlaceholder: false
+          });
         } else {
-          week.push({dayOfWeek: i});
+          week.push({
+            dayOfWeek: i,
+            isPlaceholder: true
+          });
         }
       }
 
@@ -158,7 +164,7 @@ function App() {
   };
 
   return (
-    <div d="header" className="mAuto w600">
+    <div id="header" className="mAuto w600">
       <div className="flex spaceBetween alignCenter mb5 fs14">
         <div className="flex alignCenter mr10">
           <i aria-hidden={true} className={`mr10 fs14 fas fa-door-open csrPointer`} onClick={() => {window.location.reload()}}></i>
@@ -178,23 +184,26 @@ function App() {
         <div className="flex mb5 bdrBox">
           {week.map((outfit, key) => {
             const isDisabled = dayOfWeek || (!outfitId && !dayOfWeek && (key === 0 || key === 6)) || (outfitId && outfitId !== outfit.id);
-            const icon = getIcon(outfit.top_type_id);
+            const icon       = getIcon(outfit.top_type_id);
+            const bottomHex  = outfit.bottom_hex ? outfit.bottom_hex : 'white';
 
             return (
               <React.Fragment key={key}>
-                {outfit.top_hex && outfit.bottom_hex ? (
-                  <div
-                  className={`thumb flex justifyCenter alignCenter mr5 bdrBlack csrPointer ${isDisabled ? 'opacity25' : ''}`}
-                  onClick={() => {handleEditOutfitClick(outfit)}}
-                  style={{backgroundColor: outfit.bottom_hex}}
-                  >
-                    <i aria-hidden={true} className={`fs20 fas  ${icon}`} style={{color: outfit.top_hex}}></i>
-                  </div>
-                ) : (
+                {outfit.isPlaceholder ? (
                   <div
                   className={`thumb mr5 bdrBlack csrPointer ${outfitId || (dayOfWeek !== key) ? 'opacity25' : ''}`}
                   onClick={() => {handleAddOutfitClick(key)}}
                   >
+                  </div>
+                ) : (
+                  <div
+                  className={`thumb flex justifyCenter alignCenter mr5 bdrBlack csrPointer ${isDisabled ? 'opacity25' : ''}`}
+                  onClick={() => {handleEditOutfitClick(outfit)}}
+                  style={{backgroundColor: bottomHex}}
+                  >
+                    {outfit.top_hex && (
+                      <i aria-hidden={true} className={`fs20 fas  ${icon}`} style={{color: outfit.top_hex}}></i>
+                    )}
                   </div>
                 )}
               </React.Fragment>
@@ -205,6 +214,12 @@ function App() {
       {showOutfitForm && (
         <div id="outfit" className="bdrBlackTop pt5">
           <div id="tops" className="flex mb5 bdrBox">
+            <div
+            className={`thumb flex justifyCenter alignCenter mr5 bdrBlack csrPointer ${topId === null ? '' : 'opacity25'}`}
+            onClick={() => {setTopId(null)}}
+            >
+              <i aria-hidden={true} className={`fs20 fas fa-times txtRed`}></i>
+            </div>
             {tops.map((top, key) => {
               const icon = getIcon(top.type_id);
 
@@ -220,6 +235,12 @@ function App() {
             })}
           </div>
           <div id="bottoms" className="flex mb5 bdrBox">
+            <div
+            className={`thumb flex justifyCenter alignCenter mr5 bdrBlack csrPointer ${bottomId === null ? '' : 'opacity25'}`}
+            onClick={() => {setBottomId(null)}}
+            >
+              <i aria-hidden={true} className={`fs20 fas fa-times txtRed`}></i>
+            </div>
             {bottoms.map((bottom, key) => {
               return (
                 <div

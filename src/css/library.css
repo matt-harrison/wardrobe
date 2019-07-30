@@ -74,6 +74,8 @@ input[type="text"], input[type="password"], button, select, .fas, .lineHeight1 {
 
 .bgWhite {background-color: white;}
 
+.txtRed {color: red;}
+
 .fs14 {font-size: 14pt;}
 .fs20 {font-size: 20pt;}
 
